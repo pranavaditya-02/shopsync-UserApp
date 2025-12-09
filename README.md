@@ -61,12 +61,15 @@ A modern, feature-rich e-commerce mobile application built with Flutter followin
 - Order status tracking
 - Order details
 
-#### 7. Chat/AI Assistant
-- WhatsApp-style chat interface
-- Message bubbles
-- Quick replies
-- Attachment and camera buttons
-- Voice input button
+#### 7. AI Shopping Agent
+- Intelligent product search and recommendations
+- Real-time product availability checking
+- Price and discount information
+- Store location assistance
+- Order tracking support
+- Natural language conversation interface
+- Context-aware responses
+- Floating action button for easy access
 
 #### 8. Profile
 - User information
@@ -115,6 +118,17 @@ lib/
 ├── core/
 │   ├── constants/
 │   │   └── app_constants.dart      # App-wide constants
+│   ├── services/
+│   │   └── agents/                 # Multi-agent AI system
+│   │       ├── base_agent.dart     # Base agent classes
+│   │       ├── sales_agent.dart    # Sales orchestrator
+│   │       ├── recommendation_agent.dart
+│   │       ├── inventory_agent.dart
+│   │       ├── loyalty_agent.dart
+│   │       ├── payment_agent.dart
+│   │       ├── fulfillment_agent.dart
+│   │       ├── support_agent.dart
+│   │       └── agent_manager.dart  # Central AI coordinator
 │   ├── utils/
 │   │   ├── helpers.dart            # Helper functions
 │   │   ├── locale_provider.dart    # Language state management
@@ -123,7 +137,8 @@ lib/
 │   │   └── order_provider.dart     # Order data provider
 │   └── widgets/
 │       ├── main_scaffold.dart      # Bottom navigation scaffold
-│       └── product_card.dart       # Reusable product card
+│       ├── product_card.dart       # Reusable product card
+│       └── ai_chat_fab.dart        # AI agent chat interface
 ├── features/
 │   ├── home/                       # Home screen
 │   ├── discover/                   # Browse/Search screen
@@ -242,6 +257,35 @@ Localization files are located in `assets/localization/`
 3. Update `AppConstants.supportedLanguages` in `lib/core/constants/app_constants.dart`
 4. Add locale to `supportedLocales` in `lib/app/app.dart`
 
+## 🤖 AI Shopping Agent System
+
+The app features a sophisticated multi-agent AI system for intelligent shopping assistance:
+
+### Agent Architecture
+- **Sales Agent** - Main customer-facing agent that orchestrates all interactions
+- **Recommendation Agent** - Provides personalized product recommendations
+- **Inventory Agent** - Checks product availability across stores
+- **Loyalty Agent** - Manages discounts and loyalty programs
+- **Payment Agent** - Handles payment processing
+- **Fulfillment Agent** - Coordinates delivery and shipping
+- **Support Agent** - Provides post-purchase support
+
+### Features
+- 🔍 **Intelligent Product Search** - Natural language product queries
+- 💰 **Price & Discount Information** - Real-time pricing and offers
+- 📍 **Store Location Services** - Find nearest stores with stock
+- 📦 **Order Tracking** - Track orders and deliveries
+- 🎯 **Personalized Recommendations** - Context-aware product suggestions
+- 💬 **Natural Conversations** - Chat-based interface with smart responses
+- 🌐 **Omnichannel Support** - Consistent experience across app, store, and messaging
+
+### Usage
+Access the AI agent via the floating action button (FAB) on all main screens. The agent can:
+- Search for products by description (e.g., "I want athletic shoes")
+- Provide detailed product information with prices, discounts, and availability
+- Recommend similar products based on preferences
+- Answer questions about orders, returns, payments, and more
+
 ## 🎯 State Management
 
 The app uses **Provider** for state management:
@@ -251,6 +295,7 @@ The app uses **Provider** for state management:
 - **ProductProvider** - Manages product data and operations
 - **CartProvider** - Manages shopping cart
 - **OrderProvider** - Manages orders
+- **AgentManager** - Manages AI agent system and conversation state
 
 ## 📱 Navigation Structure
 
@@ -313,6 +358,7 @@ For questions and support, please refer to the Flutter documentation:
 ## ✨ Highlights
 
 - ✅ **Complete E-commerce Flow** - From browsing to checkout
+- ✅ **AI Shopping Agent** - Intelligent multi-agent system for personalized shopping assistance
 - ✅ **Modern UI/UX** - Beautiful, intuitive interface
 - ✅ **Multilingual** - 4 languages supported
 - ✅ **Theme Support** - Light and dark modes
